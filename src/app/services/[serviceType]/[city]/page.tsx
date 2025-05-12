@@ -328,7 +328,7 @@ export default function ServicePage({ params }: { params: { serviceType: string;
         <meta name="description" content={service.metadata.description.replace("{location}", cityName)} />
       </Head>
 
-      <main className="min-h-screen">
+      <div className="min-h-screen bg-white">
         {/* Minimal Header */}
         <header className="bg-white shadow-sm py-3">
           <div className="container mx-auto px-4">
@@ -343,6 +343,38 @@ export default function ServicePage({ params }: { params: { serviceType: string;
             </Link>
           </div>
         </header>
+
+        {/* Breadcrumb Navigation */}
+        <nav className="bg-gray-50 py-3 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto">
+            <ol className="flex items-center space-x-2 text-sm">
+              <li>
+                <Link href="/" className="text-gray-500 hover:text-red-600 transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li className="text-gray-400">/</li>
+              <li>
+                <Link href="/services" className="text-gray-500 hover:text-red-600 transition-colors">
+                  Services
+                </Link>
+              </li>
+              <li className="text-gray-400">/</li>
+              <li>
+                <Link 
+                  href={`/services/${params.serviceType}`}
+                  className="text-gray-500 hover:text-red-600 transition-colors"
+                >
+                  {service?.title}
+                </Link>
+              </li>
+              <li className="text-gray-400">/</li>
+              <li className="text-gray-800 font-medium">
+                {cityName}
+              </li>
+            </ol>
+          </div>
+        </nav>
 
         {/* Hero Section */}
         <section className="relative h-[70vh] flex items-center justify-center text-white">
@@ -643,7 +675,7 @@ export default function ServicePage({ params }: { params: { serviceType: string;
             </div>
           </div>
         </footer>
-      </main>
+      </div>
     </>
   );
 } 

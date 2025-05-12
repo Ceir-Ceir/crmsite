@@ -2,77 +2,92 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import ServicesDropdown from '@/components/ui/ServicesDropdown';
+import AnimatedLink from '@/components/ui/AnimatedLink';
+import Button from '@/components/ui/Button';
 
 export default function Home() {
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
 
   return (
     <main className="min-h-screen">
       {/* Sticky Header */}
-      <header className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-          <Image
-            src="/assets/logo.png"
-            alt="CRM Construction Logo"
-            width={150}
-            height={75}
-            className="h-14 w-auto"
-          />
-          <nav className="hidden md:flex space-x-6 items-center">
-            <div className="relative">
-              <button
-                onClick={() => setIsServicesOpen(!isServicesOpen)}
-                className="text-gray-700 hover:text-red-600 transition flex items-center"
-              >
-                Services
-                <svg
-                  className={`w-4 h-4 ml-1 transition-transform ${isServicesOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              {isServicesOpen && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
-                  <Link
-                    href="/services/general-engineering"
-                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
-                  >
-                    General Engineering
-                  </Link>
-                  <Link
-                    href="/services/demolition-excavation"
-                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
-                  >
-                    Demolition / Excavation
-                  </Link>
-                  <Link
-                    href="/services/washouts-dumpster"
-                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
-                  >
-                    Washouts / Dumpster
-                  </Link>
-                  <Link
-                    href="/services/trucking-deliveries"
-                    className="block px-4 py-2 text-gray-700 hover:bg-red-50 hover:text-red-600 transition"
-                  >
-                    Trucking / Deliveries
-                  </Link>
-                </div>
-              )}
-            </div>
-            <Link href="/about" className="text-gray-700 hover:text-red-600 transition">About</Link>
-            <Link href="/contact" className="text-gray-700 hover:text-red-600 transition">Contact</Link>
-          </nav>
-          <button className="md:hidden">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+      }`}>
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <AnimatedLink href="/" className="text-2xl font-bold text-red-600">
+              <Image
+                src="/assets/logo.png"
+                alt="ATSITE Logo"
+                width={150}
+                height={75}
+                className="h-14 w-auto"
+              />
+            </AnimatedLink>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-400"
+              aria-label="Toggle menu"
+            >
+              <div className="w-6 h-5 relative flex flex-col justify-between">
+                <span className={`w-full h-0.5 ${isScrolled ? 'bg-gray-800' : 'bg-white'} transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`w-full h-0.5 ${isScrolled ? 'bg-gray-800' : 'bg-white'} transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`w-full h-0.5 ${isScrolled ? 'bg-gray-800' : 'bg-white'} transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+              </div>
+            </button>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden md:flex items-center space-x-8">
+              <ServicesDropdown isScrolled={isScrolled} />
+              <AnimatedLink href="/about" isScrolled={isScrolled}>About</AnimatedLink>
+              <AnimatedLink href="/contact" isScrolled={isScrolled}>Contact</AnimatedLink>
+              <Button href="/contact">Get a Quote</Button>
+            </nav>
+          </div>
         </div>
+
+        {/* Mobile Navigation */}
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="md:hidden fixed inset-0 bg-white z-40 pt-20"
+          >
+            <nav className="container mx-auto px-4">
+              <div className="flex flex-col space-y-4">
+                <AnimatedLink href="/services/general-engineering" isNavLink isScrolled={isScrolled}>Services</AnimatedLink>
+                <AnimatedLink href="/about" isNavLink isScrolled={isScrolled}>About</AnimatedLink>
+                <AnimatedLink href="/contact" isNavLink isScrolled={isScrolled}>Contact</AnimatedLink>
+                <Button href="/contact" fullWidth>Get a Quote</Button>
+              </div>
+            </nav>
+          </motion.div>
+        )}
       </header>
 
       {/* Hero Section */}
