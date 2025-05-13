@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    unoptimized: true,
-  },
-}
+  output: 'export', // enables static export (Next.js 13+)
+  trailingSlash: true,
+  basePath: '', // REPO_NAME = your GitHub repo name
+};
 
-module.exports = nextConfig 
+module.exports = nextConfig;
