@@ -64,9 +64,9 @@ export default function ContactPage() {
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 relative flex flex-col justify-between">
-                <span className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                <span className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                <span className={`w-full h-0.5 bg-black transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
+                <span className={`w-full h-0.5 bg-black transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
+                <span className={`w-full h-0.5 bg-black transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
               </div>
             </button>
 
@@ -89,8 +89,8 @@ export default function ContactPage() {
           >
             <nav className="container mx-auto px-4">
               <div className="flex flex-col space-y-4">
-                <AnimatedLink href="/services" className="text-black">Services</AnimatedLink>
-                <AnimatedLink href="/about" className="text-black">About</AnimatedLink>
+                <AnimatedLink href="/services" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">Services</AnimatedLink>
+                <AnimatedLink href="/about" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">About</AnimatedLink>
                 <Button href="/contact" fullWidth>Get a Quote</Button>
               </div>
             </nav>
