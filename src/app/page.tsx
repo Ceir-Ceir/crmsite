@@ -80,9 +80,9 @@ export default function Home() {
           >
             <nav className="container mx-auto px-4">
               <div className="flex flex-col space-y-4">
-                <AnimatedLink href="/services/general-engineering" isNavLink isScrolled={isScrolled}>Services</AnimatedLink>
-                <AnimatedLink href="/about" isNavLink isScrolled={isScrolled}>About</AnimatedLink>
-                <AnimatedLink href="/contact" isNavLink isScrolled={isScrolled}>Contact</AnimatedLink>
+                <AnimatedLink href="/services/general-engineering" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">Services</AnimatedLink>
+                <AnimatedLink href="/about" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">About</AnimatedLink>
+                <AnimatedLink href="/contact" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">Contact</AnimatedLink>
                 <Button href="/contact" fullWidth>Get a Quote</Button>
               </div>
             </nav>
