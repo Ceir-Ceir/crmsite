@@ -88,7 +88,7 @@ export default function WashoutsDumpsterPage() {
                   <button className="w-full text-left px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">
                     Services
                   </button>
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden group-hover:block">
+                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden group-hover:block z-50">
                     <AnimatedLink href="/services/washouts-dumpster" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Washouts & Dumpster</AnimatedLink>
                     <AnimatedLink href="/services/trucking-deliveries" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Trucking & Deliveries</AnimatedLink>
                     <AnimatedLink href="/services/general-engineering" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">General Engineering</AnimatedLink>
