@@ -95,12 +95,8 @@ export default function WashoutsDumpsterPage() {
                     <AnimatedLink href="/services/demolition-excavation" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Demolition & Excavation</AnimatedLink>
                   </div>
                 </div>
-                <AnimatedLink 
-                  href="/about" 
-                  className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200"
-                >
-                  About
-                </AnimatedLink>
+                <AnimatedLink href="/about" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">About</AnimatedLink>
+                <AnimatedLink href="/contact" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">Contact</AnimatedLink>
                 <Button href="/contact" fullWidth>Get a Quote</Button>
               </div>
             </nav>
