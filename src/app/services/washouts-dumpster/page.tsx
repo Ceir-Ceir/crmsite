@@ -43,7 +43,13 @@ export default function WashoutsDumpsterPage() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <AnimatedLink href="/" className="text-2xl font-bold text-red-600">
-              ATSITE
+              <Image
+                src="/assets/logo.png"
+                alt="ATSITE Logo"
+                width={150}
+                height={75}
+                className="h-14 w-auto"
+              />
             </AnimatedLink>
 
             {/* Mobile Menu Button */}
@@ -63,7 +69,6 @@ export default function WashoutsDumpsterPage() {
             <nav className="hidden md:flex items-center space-x-8">
               <ServicesDropdown isScrolled={isScrolled} />
               <AnimatedLink href="/about" isScrolled={isScrolled}>About</AnimatedLink>
-              <AnimatedLink href="#contact-form" isScrolled={isScrolled}>Contact</AnimatedLink>
               <Button href="#contact-form">Get a Quote</Button>
             </nav>
           </div>
@@ -81,7 +86,6 @@ export default function WashoutsDumpsterPage() {
               <div className="flex flex-col space-y-4">
                 <AnimatedLink href="/services" isNavLink>Services</AnimatedLink>
                 <AnimatedLink href="/about" isNavLink>About</AnimatedLink>
-                <AnimatedLink href="/contact" isNavLink>Contact</AnimatedLink>
                 <Button href="/contact" fullWidth>Get a Quote</Button>
               </div>
             </nav>
