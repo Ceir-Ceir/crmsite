@@ -89,60 +89,8 @@ export default function ContactPage() {
           >
             <nav className="container mx-auto px-4">
               <div className="flex flex-col space-y-4">
-                <div className="relative">
-                  <button 
-                    onClick={(e) => {
-                      e.preventDefault();
-                      const dropdown = document.getElementById('mobile-services-dropdown');
-                      if (dropdown) {
-                        dropdown.classList.toggle('hidden');
-                      }
-                    }}
-                    className="w-full text-left px-4 py-2 text-gray-800 hover:text-red-600 transition-colors duration-200 flex items-center justify-between"
-                  >
-                    <span>Services</span>
-                    <svg 
-                      className="w-4 h-4 transform transition-transform duration-200" 
-                      fill="none" 
-                      stroke="currentColor" 
-                      viewBox="0 0 24 24"
-                    >
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  <div id="mobile-services-dropdown" className="hidden pl-4 space-y-2 mt-2">
-                    <AnimatedLink 
-                      href="/services/washouts-dumpster" 
-                      className="block px-4 py-2 text-gray-800 hover:text-red-600 hover:bg-gray-50 transition-colors duration-200 rounded-lg"
-                    >
-                      Washouts & Dumpster
-                    </AnimatedLink>
-                    <AnimatedLink 
-                      href="/services/trucking-deliveries" 
-                      className="block px-4 py-2 text-gray-800 hover:text-red-600 hover:bg-gray-50 transition-colors duration-200 rounded-lg"
-                    >
-                      Trucking & Deliveries
-                    </AnimatedLink>
-                    <AnimatedLink 
-                      href="/services/general-engineering" 
-                      className="block px-4 py-2 text-gray-800 hover:text-red-600 hover:bg-gray-50 transition-colors duration-200 rounded-lg"
-                    >
-                      General Engineering
-                    </AnimatedLink>
-                    <AnimatedLink 
-                      href="/services/demolition-excavation" 
-                      className="block px-4 py-2 text-gray-800 hover:text-red-600 hover:bg-gray-50 transition-colors duration-200 rounded-lg"
-                    >
-                      Demolition & Excavation
-                    </AnimatedLink>
-                  </div>
-                </div>
-                <AnimatedLink 
-                  href="/about" 
-                  className="px-4 py-2 text-gray-800 hover:text-red-600 transition-colors duration-200 rounded-lg"
-                >
-                  About
-                </AnimatedLink>
+                <AnimatedLink href="/services" className="text-black">Services</AnimatedLink>
+                <AnimatedLink href="/about" className="text-black">About</AnimatedLink>
                 <Button href="/contact" fullWidth>Get a Quote</Button>
               </div>
             </nav>
