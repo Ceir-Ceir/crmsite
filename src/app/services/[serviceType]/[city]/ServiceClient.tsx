@@ -542,7 +542,7 @@ export default function ServicePage({ params }: { params: { serviceType: string;
                         <span className="font-semibold">Capacity:</span> {dumpster.capacity}
                       </div>
                       <div className="text-red-600 font-bold text-xl">
-                        {dumpster.price}
+                        Contact for Pricing
                       </div>
                       <div>
                         <span className="font-semibold">Best for:</span>
@@ -691,12 +691,12 @@ export default function ServicePage({ params }: { params: { serviceType: string;
                 Proudly serving {cityName} and surrounding areas in San Diego County.
               </p>
               <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-gray-400">
-                <a href="tel:+1234567890" className="hover:text-white transition">
-                  (123) 456-7890
+                <a href="tel:+16197784997" className="hover:text-white transition">
+                  (619) 778-4997
                 </a>
                 <span className="hidden md:inline">•</span>
-                <a href="mailto:info@crmconstruction.com" className="hover:text-white transition">
-                  info@crmconstruction.com
+                <a href="mailto:crmco1@icloud.com" className="hover:text-white transition">
+                  crmco1@icloud.com
                 </a>
               </div>
             </div>

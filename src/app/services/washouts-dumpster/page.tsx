@@ -201,15 +201,15 @@ export default function WashoutsDumpsterPage() {
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">10 Yard Dumpster</span>
-                    <span className="text-gray-900 font-semibold">$350/week</span>
+                    <span className="text-gray-900 font-semibold">Contact for Pricing</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">20 Yard Dumpster</span>
-                    <span className="text-gray-900 font-semibold">$450/week</span>
+                    <span className="text-gray-900 font-semibold">Contact for Pricing</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">30 Yard Dumpster</span>
-                    <span className="text-gray-900 font-semibold">$550/week</span>
+                    <span className="text-gray-900 font-semibold">Contact for Pricing</span>
                   </div>
                 </div>
               </Card>

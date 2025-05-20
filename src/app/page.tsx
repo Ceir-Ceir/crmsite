@@ -130,10 +130,10 @@ export default function Home() {
               Get a Quote
             </Link>
             <a
-              href="tel:+16191234567"
+              href="tel:+16197784997"
               className="text-xl font-bold hover:text-red-400 transition"
             >
-              (619) 123-4567
+              (619) 778-4997
             </a>
           </div>
         </div>
@@ -260,7 +260,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="text-xl font-bold mb-4 md:mb-0">
-              Call us: (619) 123-4567
+              Call us: (619) 778-4997
             </div>
             <div className="flex flex-col md:flex-row items-center gap-4">
               <p className="text-sm">Serving all of San Diego County</p>
@@ -281,8 +281,8 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">Location</h3>
-              <p>123 Construction Way</p>
-              <p>San Diego, CA 92101</p>
+              <p>1527 Old Highway 80 #103</p>
+              <p>El Cajon, CA 92021</p>
             </div>
             <div>
               <h3 className="text-xl font-bold mb-4">Certifications</h3>

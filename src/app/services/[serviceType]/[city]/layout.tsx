@@ -95,19 +95,19 @@ export default function ServiceLayout({
     "description": `${service?.description} ${city}`,
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "123 Construction Way",
-      "addressLocality": city,
+      "streetAddress": "1527 Old Highway 80 #103",
+      "addressLocality": "El Cajon",
       "addressRegion": "CA",
-      "postalCode": "92101",
+      "postalCode": "92021",
       "addressCountry": "US"
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "32.7157",
-      "longitude": "-117.1611"
+      "latitude": "32.7947",
+      "longitude": "-116.9625"
     },
     "url": `https://crmconstruction.com/services/${params.serviceType}/${params.city}`,
-    "telephone": "+16191234567",
+    "telephone": "+16197784997",
     "priceRange": "$$",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
