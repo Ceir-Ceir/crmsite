@@ -204,11 +204,11 @@ export default function WashoutsDumpsterPage() {
                     <span className="text-gray-900 font-semibold">Contact for Pricing</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">20 Yard Dumpster</span>
+                    <span className="text-gray-600">15 Yard Dumpster</span>
                     <span className="text-gray-900 font-semibold">Contact for Pricing</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">30 Yard Dumpster</span>
+                    <span className="text-gray-600">20 Yard Dumpster</span>
                     <span className="text-gray-900 font-semibold">Contact for Pricing</span>
                   </div>
                 </div>

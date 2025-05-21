@@ -78,22 +78,76 @@ export default function Home() {
             exit={{ opacity: 0, y: -20 }}
             className="md:hidden fixed inset-0 bg-white z-40 pt-20"
           >
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="absolute top-4 right-4 p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-red-400"
+              aria-label="Close menu"
+            >
+              <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             <nav className="container mx-auto px-4">
               <div className="flex flex-col space-y-4">
-                <div className="relative group">
-                  <button className="w-full text-left px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">
+                <div className="relative">
+                  <button 
+                    onClick={() => setIsMenuOpen(false)}
+                    className="w-full text-left px-4 py-2 text-black hover:text-red-600 transition-colors duration-200"
+                  >
                     Services
                   </button>
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden group-hover:block">
-                    <AnimatedLink href="/services/washouts-dumpster" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Washouts & Dumpster</AnimatedLink>
-                    <AnimatedLink href="/services/trucking-deliveries" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Trucking & Deliveries</AnimatedLink>
-                    <AnimatedLink href="/services/general-engineering" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">General Engineering</AnimatedLink>
-                    <AnimatedLink href="/services/demolition-excavation" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Demolition & Excavation</AnimatedLink>
+                  <div className="pl-4 space-y-2 mt-2">
+                    <AnimatedLink 
+                      href="/services/washouts-dumpster" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Washouts & Dumpster
+                    </AnimatedLink>
+                    <AnimatedLink 
+                      href="/services/trucking-deliveries" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Trucking & Deliveries
+                    </AnimatedLink>
+                    <AnimatedLink 
+                      href="/services/general-engineering" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      General Engineering
+                    </AnimatedLink>
+                    <AnimatedLink 
+                      href="/services/demolition-excavation" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Demolition & Excavation
+                    </AnimatedLink>
                   </div>
                 </div>
-                <AnimatedLink href="/about" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">About</AnimatedLink>
-                <AnimatedLink href="/contact" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">Contact</AnimatedLink>
-                <Button href="/contact" fullWidth>Get a Quote</Button>
+                <AnimatedLink 
+                  href="/about" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200"
+                >
+                  About
+                </AnimatedLink>
+                <AnimatedLink 
+                  href="/contact" 
+                  onClick={() => setIsMenuOpen(false)}
+                  className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200"
+                >
+                  Contact
+                </AnimatedLink>
+                <Button 
+                  href="/contact" 
+                  onClick={() => setIsMenuOpen(false)}
+                  fullWidth
+                >
+                  Get a Quote
+                </Button>
               </div>
             </nav>
           </motion.div>
@@ -118,7 +172,7 @@ export default function Home() {
         </div>
         <div className="container mx-auto px-4 z-20 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-            Heavy-Duty Construction.<br />
+            Residential/Commercial Construction.<br />
             Reliable Service.<br />
             Since 1997.
           </h1>
@@ -238,11 +292,11 @@ export default function Home() {
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>
-                    Super 10 dump trucks available
+                    Super 10 Dump Trucks available
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>
-                    Hauling: demo, dirt, asphalt, aggregate
+                    Hauling: Demo, Dirt, Asphalt, Aggregate
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>

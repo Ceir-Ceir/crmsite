@@ -237,6 +237,114 @@ const serviceData: ServiceData = {
       }
     ]
   },
+  "dumpster-rentals": {
+    title: "Dumpster Rental Services",
+    description: "Professional dumpster rental services",
+    heroImage: "/assets/dumpster.jpg",
+    metadata: {
+      title: "Best Dumpster Rental Services in {location} | CRM Construction",
+      description: "Fast, reliable dumpster rental services in {location} with free quotes and transparent pricing. Call CRM Construction today."
+    },
+    features: [
+      "Same-day delivery available",
+      "Licensed & insured team",
+      "No hidden fees",
+      "Free estimates",
+      "24/7 customer support",
+      "Environmentally responsible disposal"
+    ],
+    whyChooseUs: [
+      {
+        title: "Fast Service",
+        description: "Get your dumpster delivered within hours, not days",
+        icon: "clock"
+      },
+      {
+        title: "Transparent Pricing",
+        description: "No hidden fees or surprise charges",
+        icon: "dollar"
+      },
+      {
+        title: "Local Team",
+        description: "We're your neighbors, serving your community",
+        icon: "location"
+      },
+      {
+        title: "Expert Support",
+        description: "Professional guidance for your project",
+        icon: "support"
+      }
+    ],
+    testimonials: [
+      {
+        text: "Great service and competitive pricing. The dumpster was delivered right on time!",
+        author: "Michael R.",
+        location: "San Diego",
+        rating: 5
+      },
+      {
+        text: "Excellent customer service and reliable pickup. Will use again!",
+        author: "Jennifer K.",
+        location: "Chula Vista",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "How fast can I get a dumpster?",
+        answer: "We offer same-day delivery for orders placed before 2 PM."
+      },
+      {
+        question: "What's included in the price?",
+        answer: "The price includes delivery, pickup, and disposal fees. No hidden charges."
+      },
+      {
+        question: "Do I need a permit?",
+        answer: "We handle all necessary permits for dumpster placement on public property."
+      }
+    ],
+    dumpsterImages: [
+      {
+        size: "10 Yard",
+        image: "/assets/10-yard-dumpster.jpg",
+        dimensions: "12' x 8' x 4'",
+        capacity: "10 cubic yards",
+        price: "Contact for Pricing",
+        bestFor: [
+          "Small home renovations",
+          "Garage cleanouts",
+          "Small construction projects",
+          "Landscaping debris"
+        ]
+      },
+      {
+        size: "15 Yard",
+        image: "/assets/15-yard-dumpster.jpg",
+        dimensions: "14' x 8' x 4'",
+        capacity: "15 cubic yards",
+        price: "Contact for Pricing",
+        bestFor: [
+          "Medium home renovations",
+          "Roofing projects",
+          "Medium construction projects",
+          "Multiple room cleanouts"
+        ]
+      },
+      {
+        size: "20 Yard",
+        image: "/assets/20-yard-dumpster.jpg",
+        dimensions: "16' x 8' x 4'",
+        capacity: "20 cubic yards",
+        price: "Contact for Pricing",
+        bestFor: [
+          "Large home renovations",
+          "Commercial projects",
+          "Major construction projects",
+          "Large cleanouts"
+        ]
+      }
+    ]
+  },
   "concrete-washouts": {
     title: "Concrete Washout Services",
     description: "Professional concrete washout services",

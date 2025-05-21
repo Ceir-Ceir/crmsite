@@ -7,6 +7,7 @@ interface AnimatedLinkProps {
   className?: string;
   isNavLink?: boolean;
   isScrolled?: boolean;
+  onClick?: () => void;
 }
 
 export default function AnimatedLink({ 
@@ -14,7 +15,8 @@ export default function AnimatedLink({
   children, 
   className = '', 
   isNavLink = false,
-  isScrolled = false 
+  isScrolled = false,
+  onClick
 }: AnimatedLinkProps) {
   const baseStyles = "relative inline-block text-base md:text-lg transition-colors duration-300";
   const navLinkStyles = isNavLink ? "py-2 px-4" : "";
@@ -26,6 +28,7 @@ export default function AnimatedLink({
   return (
     <Link 
       href={href} 
+      onClick={onClick}
       className={`${baseStyles} ${navLinkStyles} ${mobileMenuStyles} ${className}`}
     >
       {children}

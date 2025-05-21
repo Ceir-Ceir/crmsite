@@ -233,7 +233,7 @@ export default function TruckingDeliveriesPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
                 Request a Quote
               </h2>
-              <form className="space-y-6">
+              <form action="https://formsubmit.co/crmco1@icloud.com" method="POST" className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
@@ -241,8 +241,10 @@ export default function TruckingDeliveriesPage() {
                   <input
                     type="text"
                     id="name"
+                    name="name"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
                     placeholder="Your name"
+                    required
                   />
                 </div>
                 <div>
@@ -252,8 +254,10 @@ export default function TruckingDeliveriesPage() {
                   <input
                     type="email"
                     id="email"
+                    name="email"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
                     placeholder="your.email@example.com"
+                    required
                   />
                 </div>
                 <div>
@@ -263,8 +267,10 @@ export default function TruckingDeliveriesPage() {
                   <input
                     type="tel"
                     id="phone"
+                    name="phone"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
                     placeholder="(555) 555-5555"
+                    required
                   />
                 </div>
                 <div>
@@ -273,11 +279,14 @@ export default function TruckingDeliveriesPage() {
                   </label>
                   <textarea
                     id="message"
+                    name="message"
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
                     placeholder="Tell us about your project"
+                    required
                   />
                 </div>
+                <input type="hidden" name="_subject" value="New Quote Request - Trucking & Deliveries" />
                 <Button type="submit" fullWidth>
                   Send Message
                 </Button>
