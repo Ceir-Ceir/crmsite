@@ -8,7 +8,19 @@
   --background-end-rgb: 255, 255, 255;
 }
 
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-end-rgb));
+}
+
+/* Prevent horizontal scroll on all elements */
+* {
+  max-width: 100%;
+  box-sizing: border-box;
 }

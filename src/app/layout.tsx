@@ -13,6 +13,16 @@ export const metadata: Metadata = {
     description: "Professional construction services serving San Diego County. Call now for a free quote.",
     type: "website",
   },
+  icons: {
+    icon: [
+      { url: '/assets/logo.png' },
+      { url: '/assets/logo.png', sizes: '32x32', type: 'image/png' },
+      { url: '/assets/logo.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/assets/logo.png' },
+    ],
+  },
 };
 
 export default function RootLayout({
@@ -22,6 +32,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/assets/logo.png" />
+        <link rel="apple-touch-icon" href="/assets/logo.png" />
+      </head>
       <body className="font-sans">{children}</body>
     </html>
   );
