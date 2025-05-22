@@ -523,59 +523,61 @@ export default function ServicePage({ params }: { params: { serviceType: string;
               priority
             />
           </div>
-          <div className="container mx-auto px-4 z-20 text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Need {service.title} in {cityName}?
-            </h1>
-            <p className="text-xl md:text-2xl mb-4">
-              Fast service. Transparent pricing. Free estimates.
-            </p>
-            <p className="text-lg md:text-xl mb-8 text-red-400 font-semibold">
-              Limited availability — book today.
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
-              <Link
-                href="#contact-form"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                Get My Free Quote
-              </Link>
-              <Link
-                href="#service-options"
-                className="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                View {service.title} Options
-              </Link>
-            </div>
-            <div className="max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-lg p-6">
-              <form action="https://formsubmit.co/crmco1@icloud.com" method="POST" className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+          <div className="container mx-auto px-4 z-20 text-center pt-20">
+            <div className="max-w-4xl mx-auto">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6">
+                Need {service.title} in {cityName}?
+              </h1>
+              <p className="text-xl md:text-2xl mb-4">
+                Fast service. Transparent pricing. Free estimates.
+              </p>
+              <p className="text-lg md:text-xl mb-8 text-red-400 font-semibold">
+                Limited availability — book today.
+              </p>
+              <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
+                <Link
+                  href="#contact-form"
+                  className="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  Get My Free Quote
+                </Link>
+                <Link
+                  href="#service-options"
+                  className="bg-white text-red-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  View {service.title} Options
+                </Link>
+              </div>
+              <div className="max-w-md mx-auto bg-white/10 backdrop-blur-sm rounded-lg p-6">
+                <form action="https://formsubmit.co/crmco1@icloud.com" method="POST" className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Your Name"
+                      className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70"
+                    />
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone Number"
+                      className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70"
+                    />
+                  </div>
                   <input
                     type="text"
-                    name="name"
-                    placeholder="Your Name"
+                    name="zip"
+                    placeholder="ZIP Code"
                     className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70"
                   />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70"
-                  />
-                </div>
-                <input
-                  type="text"
-                  name="zip"
-                  placeholder="ZIP Code"
-                  className="w-full px-4 py-2 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70"
-                />
-                <button
-                  type="submit"
-                  className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
-                >
-                  Get Free Quote
-                </button>
-              </form>
+                  <button
+                    type="submit"
+                    className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300"
+                  >
+                    Get Free Quote
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </section>
