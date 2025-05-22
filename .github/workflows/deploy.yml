@@ -23,7 +23,6 @@ jobs:
       - name: Build and Export
         run: |
           npm run build
-          npx next export
 
       - name: Add .nojekyll file
         run: touch out/.nojekyll
@@ -33,3 +32,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
+
+          
