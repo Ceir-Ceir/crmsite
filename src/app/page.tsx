@@ -76,7 +76,7 @@ export default function Home() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="md:hidden fixed inset-0 bg-white z-40 pt-20"
+            className="md:hidden fixed inset-0 bg-white z-40 pt-20 w-screen"
           >
             <button
               onClick={() => setIsMenuOpen(false)}
@@ -87,7 +87,7 @@ export default function Home() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <nav className="container mx-auto px-4">
+            <nav className="w-full px-4">
               <div className="flex flex-col space-y-4">
                 <div className="relative">
                   <button 
