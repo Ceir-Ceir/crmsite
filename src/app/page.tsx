@@ -262,7 +262,7 @@ export default function Home() {
                 <ul className="space-y-2 text-gray-600">
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>
-                    16'x8'x2' box (holds 7 yards)
+                    10, 15 & 20 Yard Dumpsters
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>
