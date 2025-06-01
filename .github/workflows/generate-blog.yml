@@ -1,0 +1,37 @@
+# .github/workflows/generate-blog.yml
+name: Generate Daily Blog Post
+
+on:
+  schedule:
+    - cron: '0 16 * * *'  # 9AM PST
+  workflow_dispatch:
+
+jobs:
+  blog-generation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate Blog
+        run: node blog-agent/index.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+
+      - name: Commit and push new blog
+        run: |
+          git config --global user.name 'github-actions'
+          git config --global user.email 'github-actions@github.com'
+          git add src/app/blog/*.mdx
+          git commit -m "🤖 Daily blog post"
+          git push
