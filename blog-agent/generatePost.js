@@ -1,5 +1,10 @@
 const OpenAI = require('openai');
 
+// Debug: Check what environment variables are available
+console.log("Available env vars:", Object.keys(process.env).filter(key => key.includes('API')));
+console.log("OPENAI_API_KEY exists:", !!process.env.OPENAI_API_KEY);
+console.log("BRAVE_API_KEY exists:", !!process.env.BRAVE_API_KEY);
+
 // Debug: Ensure API key is loaded
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("❌ OPENAI_API_KEY is missing. Check your .env file.");
