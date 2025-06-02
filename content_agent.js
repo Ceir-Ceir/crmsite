@@ -1,8 +1,8 @@
-const { execSync } = require('child_process');
-const fs = require('fs');
-const { Configuration, OpenAIApi } = require('openai');
-const simpleGit = require('simple-git');
-const fetch = require('node-fetch');
+import { execSync } from 'child_process';
+import fs from 'fs';
+import { Configuration, OpenAIApi } from 'openai';
+import simpleGit from 'simple-git';
+import fetch from 'node-fetch';
 
 const openai = new OpenAIApi(new Configuration({ apiKey: process.env.OPENAI_API_KEY }));
 const git = simpleGit();
