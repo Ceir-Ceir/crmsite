@@ -3,13 +3,14 @@ const path = require('path');
 
 function savePost(slug, title, content) {
   try {
-    // Create the slug directory if it doesn't exist
-    const slugDir = path.join(process.cwd(), 'src', 'app', 'blog', slug);
-    if (!fs.existsSync(slugDir)) {
-      fs.mkdirSync(slugDir, { recursive: true });
+    // Save all posts in a central posts directory
+    const postsDir = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
+    if (!fs.existsSync(postsDir)) {
+      fs.mkdirSync(postsDir, { recursive: true });
     }
     
-    const filePath = path.join(slugDir, 'page.mdx');
+    // Save as [slug].mdx in the posts directory
+    const filePath = path.join(postsDir, `${slug}.mdx`);
     const frontMatter = `---
 title: "${title}"
 date: "${new Date().toISOString()}"

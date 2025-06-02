@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "generate-blog": "node blog-agent/index.js && npm run build"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
@@ -36,9 +37,5 @@
     "eslint-config-next": "14.1.0",
     "gh-pages": "^6.3.0",
     "typescript": "^5.8.3"
-  },
-  "description": "This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).",
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  }
 }
