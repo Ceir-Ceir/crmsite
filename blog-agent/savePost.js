@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-export function savePost(slug, title, content) {
+function savePost(slug, title, content) {
   const filePath = path.join(process.cwd(), 'src', 'app', 'blog', `${slug}.mdx`);
   const frontMatter = `---
 title: "${title}"
@@ -13,3 +13,5 @@ slug: "${slug}"
 
   fs.writeFileSync(filePath, frontMatter + content);
 }
+
+module.exports = savePost;

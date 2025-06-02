@@ -1,6 +1,6 @@
-import axios from 'axios';
+const axios = require('axios');
 
-export async function fetchTopics(query) {
+async function fetchTopics(query) {
   const res = await axios.get('https://api.search.brave.com/res/v1/web/search', {
     headers: {
       'Accept': 'application/json',
@@ -14,3 +14,5 @@ export async function fetchTopics(query) {
 
   return res.data.web.results.map(r => r.title + "\n" + r.description);
 }
+
+module.exports = fetchTopics;

@@ -1,9 +1,9 @@
-import 'dotenv/config';
-import cron from 'node-cron';
-import { fetchTopics } from './fetchTopics.mjs';
-import { generatePost } from './generatePost.mjs';
-import { savePost } from './savePost.mjs';
-import slugify from 'slugify';
+require('dotenv').config();
+const cron = require('node-cron');
+const fetchTopics = require('./fetchTopics.js');
+const generatePost = require('./generatePost.js');
+const savePost = require('./savePost.js');
+const slugify = require('slugify');
 
 const keywords = [
   // Dumpster Rental
@@ -41,11 +41,11 @@ async function runAgent() {
   }
 }
 
-// ⏰ Schedule: Run once daily at 9:00am
+// ⏰ Run daily at 9:00 AM
 cron.schedule('0 9 * * *', () => {
   console.log("⏰ Running daily blog generation...");
   runAgent();
 });
 
-// 👉 Run immediately once for testing
+// 🧪 Run once on script start for testing
 runAgent();

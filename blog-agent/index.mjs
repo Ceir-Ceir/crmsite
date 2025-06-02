@@ -1,8 +1,8 @@
 import 'dotenv/config';
 import cron from 'node-cron';
-import { fetchTopics } from './fetchTopics.mjs';
-import { generatePost } from './generatePost.mjs';
-import { savePost } from './savePost.mjs';
+import { fetchTopics } from './fetchTopics.js';
+import { generatePost } from './generatePost.js';
+import { savePost } from './savePost.js';
 import slugify from 'slugify';
 
 const keywords = [

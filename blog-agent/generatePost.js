@@ -1,7 +1,7 @@
-import 'dotenv/config'; // Ensure .env is loaded BEFORE OpenAI instantiation
-import OpenAI from 'openai';
+require('dotenv').config(); // Load .env first
+const OpenAI = require('openai');
 
-// Debug: Make sure the key loads correctly
+// Debug: Ensure API key is loaded
 if (!process.env.OPENAI_API_KEY) {
   throw new Error("❌ OPENAI_API_KEY is missing. Check your .env file.");
 }
@@ -10,7 +10,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export async function generatePost(topic, sources) {
+async function generatePost(topic, sources) {
   const prompt = `
 Write a detailed blog post about "${topic}" for a San Diego-based construction company named CRM.
 Do not include any controversial opinions. The post should focus on improving SEO for these four core services:
@@ -37,3 +37,5 @@ Format the post with:
 
   return res.choices[0].message.content;
 }
+
+module.exports = generatePost;
