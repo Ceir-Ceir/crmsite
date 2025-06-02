@@ -1,5 +1,4 @@
 require('dotenv').config();
-const cron = require('node-cron');
 const fetchTopics = require('./fetchTopics.js');
 const generatePost = require('./generatePost.js');
 const savePost = require('./savePost.js');
@@ -36,16 +35,31 @@ async function runAgent() {
 
     savePost(slug, title, content);
     console.log(`✅ Blog saved as ${slug}.mdx`);
+    
+    // Exit successfully
+    process.exit(0);
   } catch (err) {
     console.error("❌ Blog generation failed:", err.message);
+    // Exit with error code
+    process.exit(1);
   }
 }
 
-// ⏰ Run daily at 9:00 AM
-cron.schedule('0 9 * * *', () => {
-  console.log("⏰ Running daily blog generation...");
+// Check if running in GitHub Actions or locally
+if (process.env.GITHUB_ACTIONS || process.env.CI) {
+  // In GitHub Actions, just run once and exit
   runAgent();
-});
-
-// 🧪 Run once on script start for testing
-runAgent();
+} else {
+  // For local development, you can still use the cron schedule
+  const cron = require('node-cron');
+  
+  // Run once immediately for testing
+  console.log("🧪 Running blog generation for testing...");
+  runAgent();
+  
+  // Schedule for local development (optional)
+  cron.schedule('0 9 * * *', () => {
+    console.log("⏰ Running scheduled blog generation...");
+    runAgent();
+  });
+}

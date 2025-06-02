@@ -1,4 +1,3 @@
-# .github/workflows/generate-blog.yml
 name: Generate Daily Blog Post
 
 on:
@@ -6,15 +5,20 @@ on:
     - cron: '0 16 * * *'  # 9AM PST
   workflow_dispatch:
 
+permissions:
+  contents: write
+  
 jobs:
   blog-generation:
     runs-on: ubuntu-latest
+    timeout-minutes: 10  # Add timeout to prevent hanging
 
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0  # Fetch all history for proper git operations
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -29,25 +33,33 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+          GITHUB_ACTIONS: true  # This tells index.js it's running in GitHub Actions
 
       - name: Check if new files exist
+        id: check_files
         run: |
           echo "Files in blog directory:"
-          find src/app/blog/ -type f -name "*.mdx" || echo "No MDX files found"
+          find src/app/blog/ -type f -name "*.mdx" -mmin -5 || echo "No new MDX files found"
+          
+          # Check if any files were modified in the last 5 minutes
+          if find src/app/blog/ -type f -name "*.mdx" -mmin -5 | grep -q .; then
+            echo "new_files=true" >> $GITHUB_OUTPUT
+          else
+            echo "new_files=false" >> $GITHUB_OUTPUT
+          fi
 
       - name: Commit and push new blog
+        if: steps.check_files.outputs.new_files == 'true'
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
           
           # Add all changes
           git add -A
           
-          # Check if there are any changes to commit
-          if git diff --cached --quiet; then
-            echo "No changes to commit"
-          else
-            git commit -m "🤖 Daily blog post: $(date +'%Y-%m-%d')"
-            git push origin main
-            echo "Successfully committed and pushed changes"
-          fi
+          # Commit with timestamp
+          git commit -m "🤖 Daily blog post: $(date +'%Y-%m-%d %H:%M:%S')"
+          
+          # Push changes
+          git push origin main
+          echo "✅ Successfully committed and pushed changes"
