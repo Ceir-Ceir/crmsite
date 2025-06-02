@@ -33,21 +33,21 @@ jobs:
       - name: Check if new files exist
         run: |
           echo "Files in blog directory:"
-          ls -la src/app/blog/ || echo "Blog directory doesn't exist"
+          find src/app/blog/ -type f -name "*.mdx" || echo "No MDX files found"
 
       - name: Commit and push new blog
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           
-          # Check if there are any changes
-          if git diff --quiet && git diff --staged --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
+          # Add all changes
+          git add -A
           
-          git add src/app/blog/*.mdx
-          git commit -m "🤖 Daily blog post: $(date +'%Y-%m-%d')" || exit 0
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Check if there are any changes to commit
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "🤖 Daily blog post: $(date +'%Y-%m-%d')"
+            git push origin main
+            echo "Successfully committed and pushed changes"
+          fi
