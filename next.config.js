@@ -9,7 +9,9 @@ const withMDX = require('@next/mdx')({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  distDir: 'out',  // Explicitly set the output directory
+  distDir: '.next',  // Build directory
+  // Remove this line if you have it - it might be causing issues
+  // distDir: 'out',
   trailingSlash: true,
   images: {
     unoptimized: true,
