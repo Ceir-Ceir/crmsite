@@ -6,24 +6,32 @@ import BlogLayout from '@/components/ui/BlogLayout';
 import { remark } from 'remark';
 import html from 'remark-html';
 
-// Generate all blog post routes at build time
+// This function is critical - it tells Next.js which pages to generate
 export async function generateStaticParams() {
   const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
   
+  console.log('🔍 Looking for posts in:', postsDirectory);
+  
   if (!fs.existsSync(postsDirectory)) {
+    console.log('❌ Posts directory does not exist!');
     return [];
   }
   
   const filenames = fs.readdirSync(postsDirectory);
+  console.log('📁 Found files:', filenames);
   
-  return filenames
+  const params = filenames
     .filter(filename => filename.endsWith('.mdx'))
     .map(filename => ({
       slug: filename.replace('.mdx', '')
     }));
+    
+  console.log('📝 Generated params:', params);
+  
+  return params;
 }
 
-// Generate metadata for SEO
+// Rest of your component remains the same...
 export async function generateMetadata({ params }: { params: { slug: string } }) {
   const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
   const filePath = path.join(postsDirectory, `${params.slug}.mdx`);
@@ -44,10 +52,13 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 }
 
 export default async function BlogPost({ params }: { params: { slug: string } }) {
+  console.log('🌐 Rendering blog post for slug:', params.slug);
+  
   const postsDirectory = path.join(process.cwd(), 'src', 'app', 'blog', 'posts');
   const filePath = path.join(postsDirectory, `${params.slug}.mdx`);
   
   if (!fs.existsSync(filePath)) {
+    console.log('❌ Blog post file not found:', filePath);
     notFound();
   }
   
