@@ -1,6 +1,4 @@
-const mdx = require('@next/mdx');
-
-const withMDX = mdx({
+const withMDX = require('@next/mdx')({
   extension: /\.mdx?$/,
   options: {
     remarkPlugins: [],
@@ -11,6 +9,7 @@ const withMDX = mdx({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  distDir: 'out',  // Explicitly set the output directory
   trailingSlash: true,
   images: {
     unoptimized: true,

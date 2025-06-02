@@ -1,0 +1,86 @@
+name: Generate Blog and Deploy
+
+on:
+  schedule:
+    - cron: '0 16 * * *'  # 9AM PST daily
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.github/workflows/**'  # Prevent infinite loops
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  blog-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Only generate blog on schedule or manual trigger
+      - name: Generate Blog Post
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: node blog-agent/index.js
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          BRAVE_API_KEY: ${{ secrets.BRAVE_API_KEY }}
+          GITHUB_ACTIONS: true
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if git diff --quiet; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit blog changes
+        if: steps.check_changes.outputs.has_changes == 'true' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git commit -m "🤖 Daily blog post: $(date +'%Y-%m-%d %H:%M:%S')"
+
+      # Always build and deploy
+      - name: Build Next.js site
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Add deployment files
+        run: |
+          touch out/.nojekyll
+          echo 'crmco.us' > out/CNAME
+          cp out/index.html out/404.html
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./out
+          force_orphan: true
+
+      # Push blog changes after deployment
+      - name: Push blog changes
+        if: steps.check_changes.outputs.has_changes == 'true' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+        run: git push origin main
