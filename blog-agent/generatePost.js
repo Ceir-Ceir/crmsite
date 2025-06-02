@@ -1,4 +1,3 @@
-require('dotenv').config(); // Load .env first
 const OpenAI = require('openai');
 
 // Debug: Ensure API key is loaded
