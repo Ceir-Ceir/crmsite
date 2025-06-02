@@ -114,7 +114,9 @@ export default function ContactPage() {
               <p className="text-gray-600 text-center mb-8">
                 Fill out the form below and we'll get back to you as soon as possible.
               </p>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form action="https://formsubmit.co/crmco1@icloud.com" method="POST" className="space-y-6">
+                <input type="hidden" name="_next" value="https://atsite.com/contact/success" />
+                <input type="hidden" name="_subject" value="New Contact Form Submission" />
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
