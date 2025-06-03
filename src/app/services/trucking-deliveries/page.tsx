@@ -7,6 +7,7 @@ import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
 import AnimatedLink from '@/components/ui/AnimatedLink';
 import ServicesDropdown from '@/components/ui/ServicesDropdown';
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export default function TruckingDeliveriesPage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,6 +37,7 @@ export default function TruckingDeliveriesPage() {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-gray-50"
     >
+      <GoogleAnalytics />
       {/* Sticky Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'

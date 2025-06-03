@@ -7,6 +7,7 @@ import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import AnimatedLink from "@/components/ui/AnimatedLink";
 import ServicesDropdown from '@/components/ui/ServicesDropdown';
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export default function WashoutsDumpsterPage() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,6 +37,7 @@ export default function WashoutsDumpsterPage() {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-gray-50"
     >
+      <GoogleAnalytics />
       {/* Sticky Header */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
@@ -198,18 +200,40 @@ export default function WashoutsDumpsterPage() {
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   Choose from our range of dumpster sizes to meet your project's waste management needs.
                 </p>
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">10 Yard Dumpster</span>
-                    <span className="text-gray-900 font-semibold">Contact for Pricing</span>
+                <div className="space-y-8">
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="relative w-full md:w-1/3 h-48">
+                      <Image
+                        src="/assets/10yard.png"
+                        alt="10 Yard Dumpster"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-gray-600 font-semibold">10 Yard Dumpster</span>
+                        <span className="text-gray-900 font-semibold">Contact for Pricing</span>
+                      </div>
+                      <p className="text-sm text-gray-500">Perfect for small home renovations and garage cleanouts</p>
+                    </div>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">15 Yard Dumpster</span>
-                    <span className="text-gray-900 font-semibold">Contact for Pricing</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-600">20 Yard Dumpster</span>
-                    <span className="text-gray-900 font-semibold">Contact for Pricing</span>
+                  <div className="flex flex-col md:flex-row items-center gap-6">
+                    <div className="relative w-full md:w-1/3 h-48">
+                      <Image
+                        src="/assets/20yard.png"
+                        alt="20 Yard Dumpster"
+                        fill
+                        className="object-contain"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-gray-600 font-semibold">20 Yard Dumpster</span>
+                        <span className="text-gray-900 font-semibold">Contact for Pricing</span>
+                      </div>
+                      <p className="text-sm text-gray-500">Ideal for large home renovations and commercial projects</p>
+                    </div>
                   </div>
                 </div>
               </Card>
