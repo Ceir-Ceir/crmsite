@@ -2,7 +2,7 @@ name: Generate Blog and Deploy
 
 on:
   schedule:
-    - cron: '0 16 * * *'  # 9AM PST daily
+    - cron: '0 16 * * *'   # 9AM PST daily
   workflow_dispatch:
   push:
     branches:
@@ -102,6 +102,8 @@ jobs:
           fi
         env:
           NODE_ENV: production
+          # Pass the Google Tag ID as an environment variable during the build process
+          NEXT_PUBLIC_GTAG_ID: ${{ secrets.GTAG_ID }}
 
       # Export if needed (for Next.js 13)
       - name: Export static site (if needed)
