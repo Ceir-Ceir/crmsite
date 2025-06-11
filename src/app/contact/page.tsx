@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation'; // REQUIRED: Import useRouter
 import Button from "@/components/ui/Button";
 import Card from "@/components/ui/Card";
 import AnimatedLink from "@/components/ui/AnimatedLink";
@@ -14,24 +15,98 @@ const services = [
   { id: 'demolition-excavation', name: 'Demolition & Excavation' }
 ];
 
+// Define the type for your form data, including the optional _subject field
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  city: string;
+  message: string;
+  _honey: string; // Honeypot field
+  _subject?: string; // Optional field for email subject
+}
+
 export default function ContactPage() {
+  const router = useRouter(); // REQUIRED: Initialize useRouter
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({ // Use the FormData interface
     name: '',
     email: '',
     phone: '',
     service: '',
     city: '',
-    message: ''
+    message: '',
+    _honey: '', // Initialize honeypot field as empty
   });
 
+  // Keep these useEffects for header and mobile menu functionality
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+  }, [isMenuOpen]);
+
+  // Unified handleChange for all form inputs including honeypot
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+  };
+
+  // REQUIRED: Add handleSubmit function
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default form submission to FormSubmit's domain
+
+    // Basic validation
+    if (!formData.name || !formData.email || !formData.phone || !formData.service || !formData.city || !formData.message) {
+        alert('Please fill in all required fields.');
+        return;
+    }
+
+    try {
+      const dataToSend: FormData = { ...formData }; // Create a copy of formData
+      dataToSend._subject = "New CRM Construction Quote Request"; // Set the email subject
+
+      const response = await fetch('https://formsubmit.co/ajax/crmco1@icloud.com', { // Use the AJAX endpoint
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json', // Crucial for AJAX response
+        },
+        body: JSON.stringify(dataToSend),
+      });
+
+      const result = await response.json(); // Parse FormSubmit's JSON response
+
+      if (response.ok && result.success === 'true') {
+        // If FormSubmit confirms success, then redirect on YOUR domain
+        router.push('/contact/success');
+      } else {
+        // Handle cases where FormSubmit indicates an error
+        console.error('Form submission failed (FormSubmit response):', result);
+        alert(`There was an error sending your message: ${result.message || 'Please try again.'}`);
+      }
+    } catch (error) {
+      // Handle network errors or other unexpected issues
+      console.error('Network or unexpected error during form submission:', error);
+      alert('An unexpected error occurred. Please try again.');
+    }
   };
 
   return (
@@ -41,14 +116,14 @@ export default function ContactPage() {
       transition={{ duration: 0.5 }}
       className="min-h-screen bg-gray-50"
     >
-      {/* Header */}
+      {/* Header component remains the same */}
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
-      }`}>
+         isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+       }`}>
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <AnimatedLink href="/" className="text-2xl font-bold text-red-600">
-              ATSITE
+              ATSITE 
             </AnimatedLink>
 
             {/* Mobile Menu Button */}
@@ -108,9 +183,19 @@ export default function ContactPage() {
               <p className="text-gray-600 text-center mb-8">
                 Fill out the form below and we'll get back to you as soon as possible.
               </p>
-              <form action="https://formsubmit.co/crmco1@icloud.com" method="POST" className="space-y-6">
-                <input type="hidden" name="_next" value="https://atsite.com/contact/success" />
-                <input type="hidden" name="_subject" value="New Contact Form Submission" />
+              {/* IMPORTANT: Removed action and method attributes */}
+              <form onSubmit={handleSubmit} className="space-y-6"> 
+                {/* Honeypot field for CAPTCHA bypass - REQUIRED */}
+                <input
+                  type="text"
+                  name="_honey"
+                  style={{ display: 'none' }} // Keep this hidden from users
+                  onChange={handleChange}
+                  value={formData._honey}
+                />
+
+                {/* Removed _next and _subject hidden inputs as they are for direct form submissions */}
+                
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
@@ -170,7 +255,7 @@ export default function ContactPage() {
                   >
                     <option value="">Select a service</option>
                     {services.map(service => (
-                      <option key={service.id} value={service.id}>
+                      <option key={service.id} value={service.name}>
                         {service.name}
                       </option>
                     ))}
@@ -198,14 +283,15 @@ export default function ContactPage() {
                   <textarea
                     id="message"
                     name="message"
+                    rows={4}
                     value={formData.message}
                     onChange={handleChange}
-                    rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
                     placeholder="Tell us about your project"
                     required
                   />
                 </div>
+
                 <Button type="submit" fullWidth>
                   Send Message
                 </Button>
@@ -216,4 +302,4 @@ export default function ContactPage() {
       </section>
     </motion.div>
   );
-} 
+}
