@@ -36,6 +36,30 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/assets/logo.png" />
         <link rel="apple-touch-icon" href="/assets/logo.png" />
+        
+        {/* Google Analytics */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-R69K3DN4B3"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              
+              gtag('config', 'G-R69K3DN4B3', {
+                page_title: document.title,
+                page_location: window.location.href
+              });
+              
+              gtag('config', 'AW-17073008016');
+              
+              console.log('Google Analytics loaded successfully');
+            `,
+          }}
+        />
       </head>
       <body className="font-sans">{children}</body>
     </html>
