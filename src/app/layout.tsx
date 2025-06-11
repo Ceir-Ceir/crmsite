@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Script from "next/script"; // Import the Script component
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -37,19 +38,30 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/*
+          Meta tags, link tags, and title are handled by the metadata export
+          or by direct <head> insertion where Next.js doesn't interfere.
+          Ensure you only have the necessary ones here or through metadata.
+          The `viewport` meta tag is duplicated in your source, keep only one.
+        */}
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
         />
-        <link rel="icon" href="/assets/logo.png" />
-        <link rel="apple-touch-icon" href="/assets/logo.png" />
+        {/* Icons are already handled by metadata, no need for redundant <link> tags here */}
+        {/* <link rel="icon" href="/assets/logo.png" /> */}
+        {/* <link rel="apple-touch-icon" href="/assets/logo.png" /> */}
+      </head>
+      <body className="font-sans">
+        {children}
 
-        {/* Google tag (gtag.js) */}
-        <script
+        {/* Google Analytics Scripts */}
+        <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive" // Load after the page is interactive
         />
-        <script
+        <Script
           id="gtag-init" // Add an ID to the script for better identification
           dangerouslySetInnerHTML={{
             __html: `
@@ -61,11 +73,16 @@ export default function RootLayout({
                 page_path: window.location.pathname, // Recommended for SPA/Next.js
               });
               gtag('config', '${AW_CONVERSION_ID}');
+              
+              // Only log in development
+              // if (process.env.NODE_ENV === 'development') {
+              //   console.log('Google Analytics loaded successfully');
+              // }
             `,
           }}
+          strategy="afterInteractive" // Load after the page is interactive
         />
-      </head>
-      <body className="font-sans">{children}</body>
+      </body>
     </html>
   );
 }
