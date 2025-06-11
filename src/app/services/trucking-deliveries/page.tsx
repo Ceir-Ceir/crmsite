@@ -234,6 +234,8 @@ export default function TruckingDeliveriesPage() {
                 Request a Quote
               </h2>
               <form action="https://formsubmit.co/crmco1@icloud.com" method="POST" className="space-y-6">
+                <input type="hidden" name="_next" value="https://crmco.us/contact/success" />
+                <input type="hidden" name="_subject" value="New Quote Request - Trucking & Deliveries" />
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                     Name
@@ -286,7 +288,6 @@ export default function TruckingDeliveriesPage() {
                     required
                   />
                 </div>
-                <input type="hidden" name="_subject" value="New Quote Request - Trucking & Deliveries" />
                 <Button type="submit" fullWidth>
                   Send Message
                 </Button>
