@@ -102,8 +102,8 @@ jobs:
           fi
         env:
           NODE_ENV: production
-          # Pass the Google Tag ID as an environment variable during the build process
-          NEXT_PUBLIC_GTAG_ID: ${{ secrets.GTAG_ID }}
+          # FIXED: Use vars instead of secrets for environment variables
+          NEXT_PUBLIC_GTAG_ID: ${{ vars.NEXT_PUBLIC_GTAG_ID }}
 
       # Export if needed (for Next.js 13)
       - name: Export static site (if needed)
@@ -154,3 +154,4 @@ jobs:
       - name: Push blog changes
         if: steps.check_changes.outputs.has_changes == 'true' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
         run: git push origin main
+        
