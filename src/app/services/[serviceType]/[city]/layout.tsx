@@ -32,12 +32,17 @@ const serviceData = {
   "concrete-washouts": {
     title: "Concrete Washout Services",
     description: "Professional concrete washout services in"
+  },
+  "asphalt-paving": {
+    title: "Asphalt Paving Services",
+    description: "Professional asphalt paving services in"
   }
 };
 
 export async function generateMetadata({ params }: { params: { serviceType: string; city: string } }): Promise<Metadata> {
+  const normalizedServiceType = params.serviceType === 'dumpster-rental' ? 'dumpster-rentals' : params.serviceType;
   const city = cityData[params.city as keyof typeof cityData];
-  const service = serviceData[params.serviceType as keyof typeof serviceData];
+  const service = serviceData[normalizedServiceType as keyof typeof serviceData];
 
   if (!city || !service) {
     return {
@@ -48,7 +53,7 @@ export async function generateMetadata({ params }: { params: { serviceType: stri
 
   const title = `${service.title} in ${city} | CRM Construction`;
   const description = `${service.description} ${city}. Licensed and insured construction services with experienced crews. Get a free quote today!`;
-  const url = `https://crmconstruction.com/services/${params.serviceType}/${params.city}`;
+  const url = `https://crmconstruction.com/services/${normalizedServiceType}/${params.city}`;
 
   return {
     title,
@@ -147,13 +152,13 @@ export default function ServiceLayout({
         "@type": "ListItem",
         "position": 3,
         "name": service?.title || "Service",
-        "item": `https://crmconstruction.com/services/${params.serviceType}`
+        "item": `https://crmconstruction.com/services/${normalizedServiceType}`
       },
       {
         "@type": "ListItem",
         "position": 4,
         "name": city,
-        "item": `https://crmconstruction.com/services/${params.serviceType}/${params.city}`
+        "item": `https://crmconstruction.com/services/${normalizedServiceType}/${params.city}`
       }
     ]
   };

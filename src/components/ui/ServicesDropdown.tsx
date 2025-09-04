@@ -42,6 +42,14 @@ export default function ServicesDropdown({ isScrolled }: ServicesDropdownProps) 
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full" />
           </AnimatedLink>
           <AnimatedLink 
+            href="/services/asphalt-paving" 
+            className="block px-4 py-2 text-gray-800 hover:text-red-600 group"
+            isScrolled={true}
+          >
+            Asphalt Paving
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-red-600 transition-all duration-300 group-hover:w-full" />
+          </AnimatedLink>
+          <AnimatedLink 
             href="/services/demolition-excavation" 
             className="block px-4 py-2 text-gray-800 hover:text-red-600 group"
             isScrolled={true}

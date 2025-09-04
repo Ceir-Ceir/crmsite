@@ -1,36 +1,8 @@
 "use client";
-export async function generateStaticParams() {
-  const services = ["demolition", "excavation", "dumpster-rentals", "concrete-washouts"];
-  const cities = [
-    "san-diego",
-    "chula-vista",
-    "el-cajon",
-    "escondido",
-    "la-mesa",
-    "national-city",
-    "oceanside",
-    "carlsbad",
-    "poway",
-    "santee"
-  ];
-
-  const paths = [];
-
-  for (const service of services) {
-    for (const city of cities) {
-      paths.push({ serviceType: service, city });
-    }
-  }
-
-  return paths;
-}
-export const dynamicParams = false;
-
 
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Head from "next/head";
 
 // City data
 const cityData = {
@@ -237,6 +209,73 @@ const serviceData: ServiceData = {
       }
     ]
   },
+  "asphalt-paving": {
+    title: "Asphalt Paving Services",
+    description: "Durable, high-quality asphalt paving",
+    heroImage: "/assets/paver.JPG",
+    metadata: {
+      title: "Best Asphalt Paving Services in {location} | CRM Construction",
+      description: "Durable, high-quality asphalt paving in {location} with free quotes and transparent pricing. Call CRM Construction today."
+    },
+    features: [
+      "New installations and resurfacing",
+      "Crack sealing and sealcoating",
+      "Parking lots, roads, and driveways",
+      "Line striping and ADA compliance",
+      "Base prep and grading",
+      "Licensed & insured crews"
+    ],
+    whyChooseUs: [
+      {
+        title: "Lasting Quality",
+        description: "Engineered pavement solutions built to perform for years",
+        icon: "shield"
+      },
+      {
+        title: "Fair Pricing",
+        description: "Clear, competitive pricing with free estimates",
+        icon: "dollar"
+      },
+      {
+        title: "Experienced Team",
+        description: "Skilled paving crews with decades of experience",
+        icon: "badge"
+      },
+      {
+        title: "On-Time Delivery",
+        description: "Efficient scheduling to minimize site downtime",
+        icon: "clock"
+      }
+    ],
+    testimonials: [
+      {
+        text: "Our parking lot looks brand new. Smooth finish and fast turnaround!",
+        author: "Dana W.",
+        location: "Chula Vista",
+        rating: 5
+      },
+      {
+        text: "Professional crew and great communication throughout the project.",
+        author: "Marcus T.",
+        location: "San Diego",
+        rating: 5
+      }
+    ],
+    faq: [
+      {
+        question: "How long does new asphalt last?",
+        answer: "With proper maintenance, professionally installed asphalt typically lasts 15–20 years or more."
+      },
+      {
+        question: "Can you work around business hours?",
+        answer: "Yes, we offer flexible scheduling to reduce impacts to your operations."
+      },
+      {
+        question: "Do you provide striping and ADA upgrades?",
+        answer: "Yes, we handle layout, striping, signage, and ADA compliance upgrades."
+      }
+    ]
+  },
   "dumpster-rentals": {
     title: "Dumpster Rental Services",
     description: "Professional dumpster rental services",
@@ -429,8 +468,9 @@ export default function ServicePage({ params }: { params: { serviceType: string;
   });
   const [isStickyVisible, setIsStickyVisible] = useState(false);
   const cityName = cityData[params.city as keyof typeof cityData];
-  const service = serviceData[params.serviceType as keyof typeof serviceData];
-  const isDumpsterRental = params.serviceType === "dumpster-rentals";
+  const normalizedServiceType = params.serviceType === "dumpster-rental" ? "dumpster-rentals" : params.serviceType;
+  const service = serviceData[normalizedServiceType as keyof typeof serviceData];
+  const isDumpsterRental = normalizedServiceType === "dumpster-rentals";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -458,10 +498,7 @@ export default function ServicePage({ params }: { params: { serviceType: string;
 
   return (
     <>
-      <Head>
-        <title>{service.metadata.title.replace("{location}", cityName)}</title>
-        <meta name="description" content={service.metadata.description.replace("{location}", cityName)} />
-      </Head>
+      
 
       <div className="min-h-screen bg-white">
         {/* Minimal Header */}
@@ -497,7 +534,7 @@ export default function ServicePage({ params }: { params: { serviceType: string;
               <li className="text-gray-400">/</li>
               <li>
                 <Link 
-                  href={`/services/${params.serviceType}`}
+                  href={`/services/${normalizedServiceType}`}
                   className="text-gray-500 hover:text-red-600 transition-colors"
                 >
                   {service?.title}
@@ -821,3 +858,4 @@ export default function ServicePage({ params }: { params: { serviceType: string;
     </>
   );
 } 
+

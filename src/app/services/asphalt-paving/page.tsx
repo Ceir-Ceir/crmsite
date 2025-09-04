@@ -8,7 +8,7 @@ import Card from '@/components/ui/Card';
 import AnimatedLink from '@/components/ui/AnimatedLink';
 import ServicesDropdown from '@/components/ui/ServicesDropdown';
 
-export default function DemolitionExcavationPage() {
+export default function AsphaltPavingPage() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -22,11 +22,7 @@ export default function DemolitionExcavationPage() {
   }, []);
 
   useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
+    document.body.style.overflow = isMenuOpen ? 'hidden' : 'unset';
   }, [isMenuOpen]);
 
   return (
@@ -37,15 +33,17 @@ export default function DemolitionExcavationPage() {
       className="min-h-screen bg-gray-50"
     >
       {/* Sticky Header */}
-      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
-      }`}>
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'
+        }`}
+      >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
             <AnimatedLink href="/" className="text-2xl font-bold text-red-600">
               <Image
                 src="/assets/logo.png"
-                alt="ATSITE Logo"
+                alt="CRM Construction Logo"
                 width={150}
                 height={75}
                 className="h-14 w-auto"
@@ -59,17 +57,33 @@ export default function DemolitionExcavationPage() {
               aria-label="Toggle menu"
             >
               <div className="w-6 h-5 relative flex flex-col justify-between">
-                <span className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                <span className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''}`} />
-                <span className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                <span
+                  className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${
+                    isMenuOpen ? 'rotate-45 translate-y-2' : ''
+                  }`}
+                />
+                <span
+                  className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${
+                    isMenuOpen ? 'opacity-0' : ''
+                  }`}
+                />
+                <span
+                  className={`w-full h-0.5 bg-gray-800 transition-all duration-300 ${
+                    isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                  }`}
+                />
               </div>
             </button>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center space-x-8">
               <ServicesDropdown isScrolled={isScrolled} />
-              <AnimatedLink href="/about" isScrolled={isScrolled}>About</AnimatedLink>
-              <AnimatedLink href="#contact-form" isScrolled={isScrolled}>Contact</AnimatedLink>
+              <AnimatedLink href="/about" isScrolled={isScrolled}>
+                About
+              </AnimatedLink>
+              <AnimatedLink href="#contact-form" isScrolled={isScrolled}>
+                Contact
+              </AnimatedLink>
               <Button href="#contact-form">Get a Quote</Button>
             </nav>
           </div>
@@ -89,17 +103,54 @@ export default function DemolitionExcavationPage() {
                   <button className="w-full text-left px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">
                     Services
                   </button>
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 hidden group-hover:block z-50">
-                    <AnimatedLink href="/services/washouts-dumpster" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Washouts & Dumpster</AnimatedLink>
-                    <AnimatedLink href="/services/trucking-deliveries" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Trucking & Deliveries</AnimatedLink>
-                    <AnimatedLink href="/services/general-engineering" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">General Engineering</AnimatedLink>
-                    <AnimatedLink href="/services/asphalt-paving" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Asphalt Paving</AnimatedLink>
-                    <AnimatedLink href="/services/demolition-excavation" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Demolition & Excavation</AnimatedLink>
+                  <div className="absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-2 hidden group-hover:block z-50">
+                    <AnimatedLink
+                      href="/services/washouts-dumpster"
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Washouts & Dumpster
+                    </AnimatedLink>
+                    <AnimatedLink
+                      href="/services/trucking-deliveries"
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Trucking & Deliveries
+                    </AnimatedLink>
+                    <AnimatedLink
+                      href="/services/general-engineering"
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      General Engineering
+                    </AnimatedLink>
+                    <AnimatedLink
+                      href="/services/demolition-excavation"
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Demolition & Excavation
+                    </AnimatedLink>
+                    <AnimatedLink
+                      href="/services/asphalt-paving"
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Asphalt Paving
+                    </AnimatedLink>
                   </div>
                 </div>
-                <AnimatedLink href="/about" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">About</AnimatedLink>
-                <AnimatedLink href="/contact" className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200">Contact</AnimatedLink>
-                <Button href="/contact" fullWidth>Get a Quote</Button>
+                <AnimatedLink
+                  href="/about"
+                  className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200"
+                >
+                  About
+                </AnimatedLink>
+                <AnimatedLink
+                  href="/contact"
+                  className="px-4 py-2 text-black hover:text-red-600 transition-colors duration-200"
+                >
+                  Contact
+                </AnimatedLink>
+                <Button href="/contact" fullWidth>
+                  Get a Quote
+                </Button>
               </div>
             </nav>
           </motion.div>
@@ -108,18 +159,17 @@ export default function DemolitionExcavationPage() {
 
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src="/assets/demovid.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-black bg-opacity-50" />
-        <div className="relative h-full flex items-center justify-center text-center">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/assets/paver.JPG"
+            alt="Asphalt paving hero image"
+            fill
+            priority
+            className="object-cover object-center"
+          />
+        </div>
+        <div className="absolute inset-0 bg-black/50 z-10" />
+        <div className="relative h-full flex items-center justify-center text-center z-20">
           <div className="container mx-auto px-4">
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
@@ -127,7 +177,7 @@ export default function DemolitionExcavationPage() {
               transition={{ duration: 0.5 }}
               className="text-4xl md:text-6xl font-bold text-white mb-6"
             >
-              Demolition & Excavation
+              Asphalt Paving
             </motion.h1>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -153,10 +203,10 @@ export default function DemolitionExcavationPage() {
             className="max-w-4xl mx-auto text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-              Expert Demolition & Excavation Services
+              Professional Asphalt Paving Services
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed">
-              We provide comprehensive demolition and excavation services with state-of-the-art equipment and experienced crews.
+              From new installations to resurfacing and repairs, our team delivers durable, high-quality asphalt solutions for residential, commercial, and municipal projects.
             </p>
           </motion.div>
 
@@ -168,22 +218,22 @@ export default function DemolitionExcavationPage() {
               viewport={{ once: true }}
             >
               <Card padding="lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Demolition Services</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">New Asphalt & Resurfacing</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Safe and efficient demolition services for structures of all sizes.
+                  Engineered pavement structures for long-lasting performance and smooth finishes.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-red-600 mr-2">•</span>
-                    <span className="text-gray-600">Commercial buildings</span>
+                    <span className="text-red-600 mr-2">✓</span>
+                    <span className="text-gray-600">Parking lots and roadways</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-red-600 mr-2">•</span>
-                    <span className="text-gray-600">Residential structures</span>
+                    <span className="text-red-600 mr-2">✓</span>
+                    <span className="text-gray-600">Milling and overlays</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-red-600 mr-2">•</span>
-                    <span className="text-gray-600">Interior demolition</span>
+                    <span className="text-red-600 mr-2">✓</span>
+                    <span className="text-gray-600">Base prep and grading</span>
                   </li>
                 </ul>
               </Card>
@@ -196,22 +246,22 @@ export default function DemolitionExcavationPage() {
               viewport={{ once: true }}
             >
               <Card padding="lg">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Excavation Services</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Maintenance & Protection</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">
-                  Professional excavation services for your construction and development needs.
+                  Extend the life of your pavement with proactive maintenance and protection.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
-                    <span className="text-red-600 mr-2">•</span>
-                    <span className="text-gray-600">Site preparation</span>
+                    <span className="text-red-600 mr-2">✓</span>
+                    <span className="text-gray-600">Pothole repair and patching</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-red-600 mr-2">•</span>
-                    <span className="text-gray-600">Foundation work</span>
+                    <span className="text-red-600 mr-2">✓</span>
+                    <span className="text-gray-600">Crack sealing & sealcoating</span>
                   </li>
                   <li className="flex items-start">
-                    <span className="text-red-600 mr-2">•</span>
-                    <span className="text-gray-600">Utility trenching</span>
+                    <span className="text-red-600 mr-2">✓</span>
+                    <span className="text-gray-600">Striping and ADA upgrades</span>
                   </li>
                 </ul>
               </Card>
@@ -234,11 +284,26 @@ export default function DemolitionExcavationPage() {
               <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
                 Request a Quote
               </h2>
-              <form action="https://formsubmit.co/crmco1@icloud.com" method="POST" className="space-y-6">
-                <input type="hidden" name="_next" value="https://crmco.us/contact/success" />
-                <input type="hidden" name="_subject" value="New Quote Request - Demolition & Excavation" />
+              <form
+                action="https://formsubmit.co/crmco1@icloud.com"
+                method="POST"
+                className="space-y-6"
+              >
+                <input
+                  type="hidden"
+                  name="_next"
+                  value="https://crmco.us/contact/success"
+                />
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="New Quote Request - Asphalt Paving"
+                />
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Name
                   </label>
                   <input
@@ -251,7 +316,10 @@ export default function DemolitionExcavationPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Email
                   </label>
                   <input
@@ -259,12 +327,15 @@ export default function DemolitionExcavationPage() {
                     id="email"
                     name="email"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
-                    placeholder="your.email@example.com"
+                    placeholder="you@example.com"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label
+                    htmlFor="phone"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
                     Phone
                   </label>
                   <input
@@ -272,25 +343,26 @@ export default function DemolitionExcavationPage() {
                     id="phone"
                     name="phone"
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
-                    placeholder="(555) 555-5555"
-                    required
+                    placeholder="(555) 123-4567"
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700 mb-1"
+                  >
+                    Project Details
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     rows={4}
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-red-400 focus:border-red-400 transition-colors"
-                    placeholder="Tell us about your project"
-                    required
+                    placeholder="Tell us about your paving needs..."
                   />
                 </div>
                 <Button type="submit" fullWidth>
-                  Send Message
+                  Submit Request
                 </Button>
               </form>
             </Card>
@@ -299,4 +371,4 @@ export default function DemolitionExcavationPage() {
       </section>
     </motion.div>
   );
-} 
+}

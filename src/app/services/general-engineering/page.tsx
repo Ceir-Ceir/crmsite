@@ -94,6 +94,7 @@ export default function GeneralEngineeringPage() {
                     <AnimatedLink href="/services/washouts-dumpster" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Washouts & Dumpster</AnimatedLink>
                     <AnimatedLink href="/services/trucking-deliveries" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Trucking & Deliveries</AnimatedLink>
                     <AnimatedLink href="/services/general-engineering" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">General Engineering</AnimatedLink>
+                    <AnimatedLink href="/services/asphalt-paving" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Asphalt Paving</AnimatedLink>
                     <AnimatedLink href="/services/demolition-excavation" className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200">Demolition & Excavation</AnimatedLink>
                   </div>
                 </div>

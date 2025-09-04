@@ -119,6 +119,13 @@ export default function Home() {
                       General Engineering
                     </AnimatedLink>
                     <AnimatedLink 
+                      href="/services/asphalt-paving" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Asphalt Paving
+                    </AnimatedLink>
+                    <AnimatedLink 
                       href="/services/demolition-excavation" 
                       onClick={() => setIsMenuOpen(false)}
                       className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"

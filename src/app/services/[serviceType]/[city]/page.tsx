@@ -1,8 +1,17 @@
-// ✅ File: app/services/[serviceType]/[city]/page.tsx
 import ServiceClient from "./ServiceClient";
 
-export async function generateStaticParams() {
-  const services = ["demolition", "excavation", "dumpster-rentals", "concrete-washouts"];
+export const dynamic = "error";
+export const dynamicParams = false;
+
+export async function generateStaticParams(): Promise<{ serviceType: string; city: string }[]> {
+  const services = [
+    "demolition",
+    "excavation",
+    "dumpster-rentals",
+    "dumpster-rental",
+    "concrete-washouts",
+    "asphalt-paving",
+  ];
   const cities = [
     "san-diego",
     "chula-vista",
@@ -13,21 +22,17 @@ export async function generateStaticParams() {
     "oceanside",
     "carlsbad",
     "poway",
-    "santee"
+    "santee",
   ];
 
-  const paths = [];
-
+  const paths: { serviceType: string; city: string }[] = [];
   for (const service of services) {
     for (const city of cities) {
       paths.push({ serviceType: service, city });
     }
   }
-
   return paths;
 }
-
-export const dynamicParams = false;
 
 export default function Page({ params }: { params: { serviceType: string; city: string } }) {
   return <ServiceClient params={params} />;
