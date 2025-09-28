@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import Script from "next/script";
 
-// City data for metadata
+const baseUrl = "https://crmco.us";
+
 const cityData = {
   "san-diego": "San Diego",
   "chula-vista": "Chula Vista",
@@ -12,53 +13,66 @@ const cityData = {
   "oceanside": "Oceanside",
   "carlsbad": "Carlsbad",
   "poway": "Poway",
-  "santee": "Santee"
-};
+  "santee": "Santee",
+} as const;
 
-// Service data for metadata
 const serviceData = {
   "demolition": {
     title: "Demolition Services",
-    description: "Professional demolition services in"
+    description: "Professional demolition services in",
   },
   "excavation": {
     title: "Excavation Services",
-    description: "Expert excavation services in"
+    description: "Expert excavation services in",
   },
   "dumpster-rentals": {
     title: "Dumpster Rental Services",
-    description: "Reliable dumpster rental services in"
+    description: "Reliable dumpster rental services in",
   },
   "concrete-washouts": {
     title: "Concrete Washout Services",
-    description: "Professional concrete washout services in"
+    description: "Professional concrete washout services in",
   },
   "asphalt-paving": {
     title: "Asphalt Paving Services",
-    description: "Professional asphalt paving services in"
-  }
+    description: "Professional asphalt paving services in",
+  },
+} as const;
+
+type ServiceSlug = keyof typeof serviceData;
+type CitySlug = keyof typeof cityData;
+
+const normalizeServiceType = (serviceType: string): ServiceSlug | null => {
+  const normalized = serviceType === "dumpster-rental" ? "dumpster-rentals" : serviceType;
+  return normalized in serviceData ? (normalized as ServiceSlug) : null;
 };
 
-export async function generateMetadata({ params }: { params: { serviceType: string; city: string } }): Promise<Metadata> {
-  const normalizedServiceType = params.serviceType === 'dumpster-rental' ? 'dumpster-rentals' : params.serviceType;
-  const city = cityData[params.city as keyof typeof cityData];
-  const service = serviceData[normalizedServiceType as keyof typeof serviceData];
+export async function generateMetadata({
+  params,
+}: {
+  params: { serviceType: string; city: string };
+}): Promise<Metadata> {
+  const serviceSlug = normalizeServiceType(params.serviceType);
+  const citySlug = params.city as CitySlug;
+  const city = cityData[citySlug];
+  const service = serviceSlug ? serviceData[serviceSlug] : undefined;
 
   if (!city || !service) {
     return {
       title: "Page Not Found",
-      description: "The requested page could not be found."
+      description: "The requested page could not be found.",
+      robots: { index: false, follow: false },
     };
   }
 
   const title = `${service.title} in ${city} | CRM Construction`;
   const description = `${service.description} ${city}. Licensed and insured construction services with experienced crews. Get a free quote today!`;
-  const url = `https://crmconstruction.com/services/${normalizedServiceType}/${params.city}`;
+  const url = `${baseUrl}/services/${serviceSlug}/${params.city}`;
 
   return {
     title,
     description,
-    keywords: `${service.title}, ${city}, Construction Services, San Diego County`,
+    keywords: `${service.title}, ${city}, construction services, San Diego County`,
     openGraph: {
       title,
       description,
@@ -89,47 +103,46 @@ export default function ServiceLayout({
   children: React.ReactNode;
   params: { serviceType: string; city: string };
 }) {
-  const city = cityData[params.city as keyof typeof cityData];
-  const service = serviceData[params.serviceType as keyof typeof serviceData];
+  const serviceSlug = normalizeServiceType(params.serviceType);
+  const citySlug = params.city as CitySlug;
+  const city = cityData[citySlug];
+  const service = serviceSlug ? serviceData[serviceSlug] : undefined;
+
+  const servicePath = serviceSlug ? `${baseUrl}/services/${serviceSlug}` : `${baseUrl}/services`;
+  const pageUrl = serviceSlug && city ? `${servicePath}/${params.city}` : `${baseUrl}/services`;
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "CRM Construction",
-    "image": "https://crmconstruction.com/assets/logo.png",
-    "description": `${service?.description} ${city}`,
+    "image": `${baseUrl}/assets/logo.png`,
+    "description": service && city ? `${service.description} ${city}` : undefined,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "1527 Old Highway 80 #103",
       "addressLocality": "El Cajon",
       "addressRegion": "CA",
       "postalCode": "92021",
-      "addressCountry": "US"
+      "addressCountry": "US",
     },
     "geo": {
       "@type": "GeoCoordinates",
       "latitude": "32.7947",
-      "longitude": "-116.9625"
+      "longitude": "-116.9625",
     },
-    "url": `https://crmconstruction.com/services/${params.serviceType}/${params.city}`,
+    "url": pageUrl,
     "telephone": "+16197784997",
     "priceRange": "$$",
     "openingHoursSpecification": {
       "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday"
-      ],
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
       "opens": "08:00",
-      "closes": "17:00"
+      "closes": "17:00",
     },
     "sameAs": [
       "https://www.facebook.com/crmconstruction",
-      "https://www.linkedin.com/company/crmconstruction"
-    ]
+      "https://www.linkedin.com/company/crmconstruction",
+    ],
   };
 
   const breadcrumbData = {
@@ -140,27 +153,27 @@ export default function ServiceLayout({
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://crmconstruction.com"
+        "item": baseUrl,
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://crmconstruction.com/services"
+        "item": `${baseUrl}/services`,
       },
-      {
+      service && {
         "@type": "ListItem",
         "position": 3,
-        "name": service?.title || "Service",
-        "item": `https://crmconstruction.com/services/${normalizedServiceType}`
+        "name": service.title,
+        "item": servicePath,
       },
-      {
+      service && city && {
         "@type": "ListItem",
         "position": 4,
         "name": city,
-        "item": `https://crmconstruction.com/services/${normalizedServiceType}/${params.city}`
-      }
-    ]
+        "item": pageUrl,
+      },
+    ].filter(Boolean),
   };
 
   return (
@@ -178,4 +191,4 @@ export default function ServiceLayout({
       {children}
     </>
   );
-} 
+}
