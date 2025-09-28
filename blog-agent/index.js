@@ -5,22 +5,17 @@ const savePost = require('./savePost.js');
 const slugify = require('slugify');
 
 const keywords = [
-  // Dumpster Rental
-  "sustainable dumpster rental San Diego",
-  "how to dispose of renovation debris responsibly",
-  "dumpster rental tips for contractors",
-  // Excavation
-  "excavation safety tips San Diego",
-  "how to prepare land for construction",
-  "best practices for excavation crews",
-  // Demolition
-  "safe demolition techniques San Diego",
-  "how to recycle demolition debris",
-  "residential vs commercial demolition",
-  // Concrete Washouts
-  "managing concrete washout water",
-  "how to comply with California washout regulations",
-  "eco-friendly concrete disposal methods"
+  // Asphalt Paving
+  "asphalt paving services San Diego",
+  "driveway paving contractors San Diego",
+  "parking lot asphalt maintenance tips",
+  "asphalt resurfacing vs repaving",
+  "sealcoating benefits for commercial asphalt",
+  "how to improve asphalt drainage",
+  "permitting for asphalt paving projects",
+  "ADA compliant asphalt striping best practices",
+  "eco-friendly asphalt paving solutions",
+  "preventing asphalt driveway cracks"
 ];
 
 async function runAgent() {

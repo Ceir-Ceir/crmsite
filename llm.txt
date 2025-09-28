@@ -1,0 +1,57 @@
+CRM Construction / CRM Paving - LLM SEO Profile
+
+Business Overview:
+- Family-owned asphalt paving and site work contractor serving San Diego County since 1997.
+- Headquarters: 1527 Old Highway 80 #103, El Cajon, CA 92021.
+- Phone: (619) 778-4997 | Email: crmco1@icloud.com | Website: https://crmco.us
+- Licensed, insured, ISNetworld and Veriforce certified crew providing commercial, municipal, and residential solutions.
+
+Core Services (San Diego County focus):
+1. Asphalt Paving and Resurfacing - driveway paving, parking lot construction, asphalt maintenance, sealcoating, ADA striping, grading, drainage, pothole repair.
+2. Demolition and Excavation - structural demo, earthwork, grading, site clearing, soil export, debris hauling, compaction.
+3. Trucking and Material Deliveries - Super 10 dump trucks, asphalt and aggregate delivery, dirt, demolition hauling, equipment transport.
+4. Concrete Washouts and Dumpster Rentals - 10/15/20-yard roll-off dumpsters, LEED-compliant concrete washouts, same-day delivery, scheduled pickups.
+5. General Engineering and Site Work - underground utilities, stormwater control, grading, retaining systems, civil support for commercial builds.
+
+Primary Service Area:
+- San Diego, Chula Vista, National City, La Mesa, El Cajon, Santee, Poway, Escondido, Oceanside, Carlsbad, plus greater San Diego County neighborhoods and industrial parks.
+
+Key Value Propositions:
+- Rapid scheduling with local crews and owned fleet.
+- Transparent estimates, no hidden hauling fees, free on-site paving consultations.
+- Environmental compliance for concrete washouts and debris recycling.
+- 24/7 dispatch availability for emergency paving repairs or material delivery.
+
+High-Intent Landing Pages:
+- https://crmco.us/services/asphalt-paving
+- https://crmco.us/services/demolition-excavation
+- https://crmco.us/services/washouts-dumpster
+- https://crmco.us/services/trucking-deliveries
+- https://crmco.us/services/general-engineering
+- Dynamic city pages: https://crmco.us/services/{service-type}/{city} (examples: /services/asphalt-paving/san-diego, /services/demolition/chula-vista).
+- Blog hub: https://crmco.us/blog - daily Groq-generated posts covering asphalt paving tips, maintenance, permitting guidance.
+
+Top Asphalt and Paving Keywords:
+- "asphalt paving San Diego", "parking lot paving San Diego", "driveway paving contractors", "asphalt resurfacing vs repaving", "sealcoating services San Diego", "ADA compliant striping", "pothole repair San Diego", "commercial asphalt maintenance".
+
+Customer Segments:
+- Commercial property managers, HOAs, general contractors, municipalities, logistics yards, residential estates needing driveway upgrades or resurfacing.
+
+Lead Capture and Response:
+- Website forms submit to FormSubmit -> crmco1@icloud.com with redirect to https://crmco.us/contact/success.
+- Phone line monitored by CRM Construction dispatch; typical response within 24 hours.
+
+Trust and Credentials:
+- 25+ years continuous operation in San Diego County.
+- ISNetworld and Veriforce safety certifications.
+- Fully insured crews; compliant with California stormwater and ADA requirements.
+
+Notable Highlights:
+- Own fleet of Super 10 dump trucks and paving equipment for turnkey projects.
+- Offers emergency asphalt patching and overnight parking lot striping to minimize downtime.
+- Supports sustainable practices: recyclable asphalt removal, concrete washout containment, eco-conscious dumpster rental guidelines.
+
+Use Cases for AI and Search:
+- Summaries for customers seeking asphalt paving quotes or quick info on San Diego paving regulations.
+- Generate outreach templates highlighting CRM Construction's asphalt expertise, fast scheduling, and compliance experience.
+- Support local SEO snippets emphasizing "San Diego asphalt paving", "CRM Construction", "CRM Paving", and the El Cajon headquarters.

@@ -1,5 +1,7 @@
 import { MetadataRoute } from 'next';
 
+const baseUrl = 'https://crmco.us';
+
 const cities = [
   'san-diego',
   'chula-vista',
@@ -13,7 +15,16 @@ const cities = [
   'santee'
 ];
 
-const services = [
+const serviceLandingPages = [
+  { path: '/services/asphalt-paving', priority: 0.95 },
+  { path: '/services/demolition-excavation', priority: 0.9 },
+  { path: '/services/washouts-dumpster', priority: 0.85 },
+  { path: '/services/trucking-deliveries', priority: 0.85 },
+  { path: '/services/general-engineering', priority: 0.85 }
+];
+
+const dynamicServiceSlugs = [
+  'asphalt-paving',
   'demolition',
   'excavation',
   'dumpster-rentals',
@@ -21,47 +32,48 @@ const services = [
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://crmconstruction.com';
-  
-  // Static pages
   const staticPages = [
     {
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'daily' as const,
-      priority: 1,
+      priority: 1
     },
     {
       url: `${baseUrl}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.8,
+      priority: 0.8
     },
     {
       url: `${baseUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
-      priority: 0.8,
+      priority: 0.8
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date(),
+      changeFrequency: 'daily' as const,
+      priority: 0.7
+    }
   ];
 
-  // Service pages
-  const servicePages = services.map(service => ({
-    url: `${baseUrl}/services/${service}`,
+  const servicePages = serviceLandingPages.map(({ path, priority }) => ({
+    url: `${baseUrl}${path}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
-    priority: 0.9,
+    priority
   }));
 
-  // Dynamic service-city pages
-  const dynamicPages = services.flatMap(service =>
+  const dynamicPages = dynamicServiceSlugs.flatMap(service =>
     cities.map(city => ({
       url: `${baseUrl}/services/${service}/${city}`,
       lastModified: new Date(),
       changeFrequency: 'weekly' as const,
-      priority: 0.7,
+      priority: service === 'asphalt-paving' ? 0.9 : 0.7
     }))
   );
 
   return [...staticPages, ...servicePages, ...dynamicPages];
-} 
+}
