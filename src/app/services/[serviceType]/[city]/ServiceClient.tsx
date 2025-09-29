@@ -18,6 +18,14 @@ const cityData = {
   "santee": "Santee"
 };
 
+const serviceNavLinks = [
+  { href: "/services/general-engineering", label: "General Engineering" },
+  { href: "/services/demolition-excavation", label: "Demolition & Excavation" },
+  { href: "/services/asphalt-paving", label: "Asphalt Paving" },
+  { href: "/services/trucking-deliveries", label: "Trucking & Deliveries" },
+  { href: "/services/washouts-dumpster", label: "Washouts & Dumpster" },
+];
+
 // Add type definitions
 interface DumpsterImage {
   size: string;
@@ -279,7 +287,7 @@ const serviceData: ServiceData = {
   "dumpster-rentals": {
     title: "Dumpster Rental Services",
     description: "Professional dumpster rental services",
-    heroImage: "/assets/dumpster.jpg",
+    heroImage: "/assets/dumphero.png",
     metadata: {
       title: "Best Dumpster Rental Services in {location} | CRM Construction",
       description: "Fast, reliable dumpster rental services in {location} with free quotes and transparent pricing. Call CRM Construction today."
@@ -387,7 +395,7 @@ const serviceData: ServiceData = {
   "concrete-washouts": {
     title: "Concrete Washout Services",
     description: "Professional concrete washout services",
-    heroImage: "/assets/washout.jpg",
+    heroImage: "/assets/washout.png",
     metadata: {
       title: "Best Concrete Washout Services in {location} | CRM Construction",
       description: "Fast, reliable concrete washout services in {location} with free quotes and transparent pricing. Call CRM Construction today."
@@ -548,6 +556,20 @@ export default function ServicePage({ params }: { params: { serviceType: string;
           </div>
         </nav>
 
+        <div className="bg-white border-y border-gray-100">
+          <div className="container mx-auto px-4 py-3 flex flex-wrap justify-center gap-3 text-sm md:text-base font-medium text-gray-700">
+            {serviceNavLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="px-4 py-2 rounded-full border border-gray-200 hover:border-red-500 hover:text-red-600 transition-colors duration-200"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* Hero Section */}
         <section className="relative h-[70vh] flex items-center justify-center text-white">
           <div className="absolute inset-0 bg-black/50 z-10" />
@@ -567,8 +589,11 @@ export default function ServicePage({ params }: { params: { serviceType: string;
             <p className="text-xl md:text-2xl mb-4">
               Fast service. Transparent pricing. Free estimates.
             </p>
+            <p className="text-2xl md:text-3xl font-semibold mb-4">
+              Call <a href="tel:+16197784997" className="text-red-400 hover:text-red-300 underline-offset-4 hover:underline">(619) 778-4997</a> now for immediate service.
+            </p>
             <p className="text-lg md:text-xl mb-8 text-red-400 font-semibold">
-              Limited availability — book today.
+              Limited availability - book today.
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center mb-8">
               <Link
@@ -857,5 +882,4 @@ export default function ServicePage({ params }: { params: { serviceType: string;
       </div>
     </>
   );
-} 
-
+}

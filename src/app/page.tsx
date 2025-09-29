@@ -98,25 +98,18 @@ export default function Home() {
                   </button>
                   <div className="pl-4 space-y-2 mt-2">
                     <AnimatedLink 
-                      href="/services/washouts-dumpster" 
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
-                    >
-                      Washouts & Dumpster
-                    </AnimatedLink>
-                    <AnimatedLink 
-                      href="/services/trucking-deliveries" 
-                      onClick={() => setIsMenuOpen(false)}
-                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
-                    >
-                      Trucking & Deliveries
-                    </AnimatedLink>
-                    <AnimatedLink 
                       href="/services/general-engineering" 
                       onClick={() => setIsMenuOpen(false)}
                       className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
                     >
                       General Engineering
+                    </AnimatedLink>
+                    <AnimatedLink 
+                      href="/services/demolition-excavation" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Demolition & Excavation
                     </AnimatedLink>
                     <AnimatedLink 
                       href="/services/asphalt-paving" 
@@ -126,11 +119,18 @@ export default function Home() {
                       Asphalt Paving
                     </AnimatedLink>
                     <AnimatedLink 
-                      href="/services/demolition-excavation" 
+                      href="/services/trucking-deliveries" 
                       onClick={() => setIsMenuOpen(false)}
                       className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
                     >
-                      Demolition & Excavation
+                      Trucking & Deliveries
+                    </AnimatedLink>
+                    <AnimatedLink 
+                      href="/services/washouts-dumpster" 
+                      onClick={() => setIsMenuOpen(false)}
+                      className="block px-4 py-2 text-black hover:text-red-600 hover:bg-gray-50 transition-colors duration-200"
+                    >
+                      Washouts & Dumpster
                     </AnimatedLink>
                   </div>
                 </div>

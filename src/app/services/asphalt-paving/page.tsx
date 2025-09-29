@@ -179,6 +179,14 @@ export default function AsphaltPavingPage() {
             >
               Asphalt Paving
             </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-2xl md:text-3xl font-semibold text-white mb-6"
+            >
+              Call <a href="tel:+16197784997" className="text-red-200 hover:text-red-100 underline-offset-4 hover:underline">(619) 778-4997</a> now for immediate service.
+            </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
