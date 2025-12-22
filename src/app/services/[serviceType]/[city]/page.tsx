@@ -21,6 +21,10 @@ export async function generateStaticParams(): Promise<{ serviceType: string; cit
     "national-city",
     "oceanside",
     "carlsbad",
+    "jamul",
+    "alpine",
+    "descanso",
+    "ramona",
     "poway",
     "santee",
   ];

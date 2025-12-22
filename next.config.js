@@ -6,9 +6,11 @@ const withMDX = require('@next/mdx')({
   },
 });
 
+const isDev = process.env.NODE_ENV === 'development';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
+  ...(isDev ? {} : { output: 'export' }),
   distDir: '.next',
   trailingSlash: true,
   images: {

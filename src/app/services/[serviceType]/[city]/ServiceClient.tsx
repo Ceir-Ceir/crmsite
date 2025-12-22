@@ -14,17 +14,14 @@ const cityData = {
   "national-city": "National City",
   "oceanside": "Oceanside",
   "carlsbad": "Carlsbad",
+  "jamul": "Jamul",
+  "alpine": "Alpine",
+  "descanso": "Descanso",
+  "ramona": "Ramona",
   "poway": "Poway",
   "santee": "Santee"
 };
 
-const serviceNavLinks = [
-  { href: "/services/general-engineering", label: "General Engineering" },
-  { href: "/services/demolition-excavation", label: "Demolition & Excavation" },
-  { href: "/services/asphalt-paving", label: "Asphalt Paving" },
-  { href: "/services/trucking-deliveries", label: "Trucking & Deliveries" },
-  { href: "/services/washouts-dumpster", label: "Washouts & Dumpster" },
-];
 
 // Add type definitions
 interface DumpsterImage {
@@ -353,7 +350,7 @@ const serviceData: ServiceData = {
     dumpsterImages: [
       {
         size: "10 Yard",
-        image: "/assets/10-yard-dumpster.jpg",
+        image: "/assets/10yard.png",
         dimensions: "12' x 8' x 4'",
         capacity: "10 cubic yards",
         price: "Contact for Pricing",
@@ -366,7 +363,7 @@ const serviceData: ServiceData = {
       },
       {
         size: "15 Yard",
-        image: "/assets/15-yard-dumpster.jpg",
+        image: "/assets/tenyard.png",
         dimensions: "14' x 8' x 4'",
         capacity: "15 cubic yards",
         price: "Contact for Pricing",
@@ -379,7 +376,7 @@ const serviceData: ServiceData = {
       },
       {
         size: "20 Yard",
-        image: "/assets/20-yard-dumpster.jpg",
+        image: "/assets/20yard.png",
         dimensions: "16' x 8' x 4'",
         capacity: "20 cubic yards",
         price: "Contact for Pricing",
@@ -556,22 +553,8 @@ export default function ServicePage({ params }: { params: { serviceType: string;
           </div>
         </nav>
 
-        <div className="bg-white border-y border-gray-100">
-          <div className="container mx-auto px-4 py-3 flex flex-wrap justify-center gap-3 text-sm md:text-base font-medium text-gray-700">
-            {serviceNavLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="px-4 py-2 rounded-full border border-gray-200 hover:border-red-500 hover:text-red-600 transition-colors duration-200"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
         {/* Hero Section */}
-        <section className="relative h-[70vh] flex items-center justify-center text-white">
+        <section className="relative min-h-[70vh] flex items-start justify-center text-white py-12 md:py-16">
           <div className="absolute inset-0 bg-black/50 z-10" />
           <div className="absolute inset-0 z-0">
             <Image

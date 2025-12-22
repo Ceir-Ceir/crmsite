@@ -12,6 +12,10 @@ const cityData = {
   "national-city": "National City",
   "oceanside": "Oceanside",
   "carlsbad": "Carlsbad",
+  "jamul": "Jamul",
+  "alpine": "Alpine",
+  "descanso": "Descanso",
+  "ramona": "Ramona",
   "poway": "Poway",
   "santee": "Santee",
 } as const;

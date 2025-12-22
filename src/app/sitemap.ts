@@ -11,6 +11,10 @@ const cities = [
   'national-city',
   'oceanside',
   'carlsbad',
+  'jamul',
+  'alpine',
+  'descanso',
+  'ramona',
   'poway',
   'santee'
 ];
