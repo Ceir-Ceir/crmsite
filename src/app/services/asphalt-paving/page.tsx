@@ -160,13 +160,16 @@ export default function AsphaltPavingPage() {
       {/* Hero Section */}
       <section className="relative h-[60vh] w-full overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/assets/paver.JPG"
-            alt="Asphalt paving hero image"
-            fill
-            priority
-            className="object-cover object-center"
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/assets/Pavement.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="relative h-full flex items-center justify-center text-center z-20">

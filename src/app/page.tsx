@@ -173,7 +173,7 @@ export default function Home() {
             className="w-full h-full object-cover"
             style={{ objectFit: 'cover' }}
           >
-            <source src="/assets/vidcrm.mp4" type="video/mp4" />
+            <source src="/assets/FrontPage.mov" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -226,6 +226,32 @@ export default function Home() {
                   <li className="flex items-start">
                     <span className="text-red-600 mr-2">•</span>
                     Veriforce certified crews
+                  </li>
+                </ul>
+              </div>
+            </Link>
+
+            {/* Asphalt Paving */}
+            <Link href="/services/asphalt-paving" className="block">
+              <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition duration-300 transform hover:-translate-y-2">
+                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                  <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold mb-4 text-red-600">Asphalt Paving</h3>
+                <ul className="space-y-2 text-gray-600">
+                  <li className="flex items-start">
+                    <span className="text-red-600 mr-2">•</span>
+                    New installations & resurfacing
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-600 mr-2">•</span>
+                    Parking lots and roadways
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-red-600 mr-2">•</span>
+                    Sealcoating & maintenance
                   </li>
                 </ul>
               </div>
